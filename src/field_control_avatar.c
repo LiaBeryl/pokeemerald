@@ -32,6 +32,7 @@
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
 #include "constants/maps.h"
+#include "constants/moves.h"
 #include "constants/songs.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
@@ -186,7 +187,6 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     }
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
         return TRUE;
-
     return FALSE;
 }
 
@@ -446,13 +446,12 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
-    if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
-        return EventScript_UseSurf;
-
+    if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithWaterEvent(MOVE_SURF) == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)	
+		return EventScript_UseSurf;
     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE)
     {
-        if (FlagGet(FLAG_BADGE08_GET) == TRUE && IsPlayerSurfingNorth() == TRUE)
-            return EventScript_UseWaterfall;
+        if (FlagGet(FLAG_BADGE08_GET) == TRUE && IsPlayerSurfingNorth() == TRUE && PartyHasMonWithWaterEvent(MOVE_WATERFALL) == TRUE )
+			return EventScript_UseWaterfall;
         else
             return EventScript_CannotUseWaterfall;
     }
@@ -461,9 +460,9 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metati
 
 static bool32 TrySetupDiveDownScript(void)
 {
-    if (FlagGet(FLAG_BADGE07_GET) && TrySetDiveWarp() == 2)
+    if (FlagGet(FLAG_BADGE07_GET) && TrySetDiveWarp() == 2 && PartyHasMonWithWaterEvent(MOVE_DIVE) == TRUE )
     {
-        ScriptContext1_SetupScript(EventScript_UseDive);
+		ScriptContext1_SetupScript(EventScript_UseDive);
         return TRUE;
     }
     return FALSE;
@@ -473,7 +472,7 @@ static bool32 TrySetupDiveEmergeScript(void)
 {
     if (FlagGet(FLAG_BADGE07_GET) && gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
     {
-        ScriptContext1_SetupScript(EventScript_UseDiveUnderwater);
+		ScriptContext1_SetupScript(EventScript_UseDiveUnderwater);
         return TRUE;
     }
     return FALSE;

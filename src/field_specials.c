@@ -127,6 +127,65 @@ static void sub_813BD84(void);
 static u16 sub_813BB74(void);
 static void sub_813BE30(struct LinkBattleRecords *linkRecords, u8 a, u8 b);
 
+void Special_CheckPartyFieldEvent(void)
+{
+	u8 i;
+	u16 moveCache, itemCache;
+	moveCache = VarGet(VAR_ITEMMOVECACHE);
+	
+	switch(moveCache)
+	{
+		case(MOVE_CUT):
+			itemCache = ITEM_CUT;
+			break;
+		case(MOVE_ROCK_SMASH):
+			itemCache = ITEM_ROCK_SMASH;
+			break;
+		case(MOVE_STRENGTH):
+			itemCache = ITEM_STRENGTH;
+			break;
+		case(MOVE_WATERFALL):
+			itemCache = ITEM_WATERFALL;
+			break;
+		case(MOVE_DIVE):
+			itemCache = ITEM_DIVE;
+			break;
+		case(MOVE_SURF):
+			itemCache = ITEM_SURF;
+	}
+	
+	for(i=0; i<PARTY_SIZE; i++)
+	{
+		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+		{
+            break;
+		}
+        if (GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM) == itemCache)
+		{
+			VarSet(VAR_RESULT, i);
+			return;
+		}
+		   
+	}
+	VarSet(VAR_RESULT, 6);
+	
+	if(VarGet(VAR_RESULT)==6)
+	{
+		for(i=0; i<PARTY_SIZE; i++)
+		{
+			if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+			{
+               return;
+			}
+			if (MonKnowsMove(&gPlayerParty[i],moveCache))
+			{
+				VarSet(VAR_RESULT, i);
+			}
+		   
+		}
+	}		
+}
+
 void Special_ShowDiploma(void)
 {
     SetMainCallback2(CB2_ShowDiploma);

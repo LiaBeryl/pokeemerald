@@ -28,6 +28,7 @@
 #include "constants/flags.h"
 #include "constants/maps.h"
 #include "constants/moves.h"
+#include "constants/items.h" //YKNR 0.3.9
 #include "constants/songs.h"
 #include "constants/species.h"
 
@@ -1287,20 +1288,50 @@ u8 GetPlayerAvatarGenderByGraphicsId(u8 gfxId)
     }
 }
 
-bool8 PartyHasMonWithSurf(void)
+bool8 PartyHasMonWithWaterEvent(u16 fMove)
 {
     u8 i;
 
-    if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
-    {
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
-                break;
-            if (MonKnowsMove(&gPlayerParty[i], MOVE_SURF))
-                return TRUE;
-        }
-    }
+	switch(fMove)
+	{
+		case(MOVE_SURF):
+			if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
+			{
+				for (i = 0; i < PARTY_SIZE; i++)
+				{
+					if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+						break;
+					if (MonKnowsMove(&gPlayerParty[i], MOVE_SURF)||GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM) == ITEM_SURF)
+						return TRUE;
+				}
+			}
+			break;
+		case(MOVE_DIVE):
+			if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
+			{
+				for (i = 0; i < PARTY_SIZE; i++)
+				{
+					if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+						break;
+					if (MonKnowsMove(&gPlayerParty[i], MOVE_DIVE) || GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM) == ITEM_DIVE)
+					return TRUE;
+				}
+				
+			}
+			break;
+		case(MOVE_WATERFALL):
+			if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
+			{
+				for (i = 0; i < PARTY_SIZE; i++)
+				{
+					if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+						break;
+					if (MonKnowsMove(&gPlayerParty[i], MOVE_WATERFALL) || GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM) == ITEM_WATERFALL)
+					return TRUE;
+				}
+				
+			}
+	}
     return FALSE;
 }
 

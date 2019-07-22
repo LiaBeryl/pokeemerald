@@ -402,6 +402,21 @@ const u32 *const gItemIconTable[][2] =
     // Emerald-only key items
     [ITEM_MAGMA_EMBLEM] = {gItemIcon_MagmaEmblem, gItemIconPalette_MagmaEmblem},
     [ITEM_OLD_SEA_MAP] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	//Item Field Moves
+	[ITEM_CUT] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_FLASH] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_ROCK_SMASH] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_STRENGTH] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_SURF] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_FLY] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_DIVE] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_WATERFALL] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_TELEPORT] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_DIG] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_SECRET_POWER] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_MILK_DRINK] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_SOFT_BOILED] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
+	[ITEM_SWEET_SCENT] = {gItemIcon_OldSeaMap, gItemIconPalette_OldSeaMap},
     // Return to field arrow
     [ITEM_FIELD_ARROW] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
 };

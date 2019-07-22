@@ -1174,6 +1174,12 @@ static const u16 sFieldMoves[] =
     MOVE_DIG, MOVE_SECRET_POWER, MOVE_MILK_DRINK, MOVE_SOFT_BOILED, MOVE_SWEET_SCENT, FIELD_MOVE_TERMINATOR
 };
 
+static const u16 sFieldItems[] =																						
+{																															
+    ITEM_CUT, ITEM_FLASH, ITEM_ROCK_SMASH, ITEM_STRENGTH, ITEM_SURF, ITEM_FLY, ITEM_DIVE, ITEM_WATERFALL, ITEM_TELEPORT,	
+    ITEM_DIG, ITEM_SECRET_POWER, ITEM_MILK_DRINK, ITEM_SOFT_BOILED, ITEM_SWEET_SCENT, FIELD_MOVE_TERMINATOR				
+};																												
+
 struct
 {
     bool8 (*fieldMoveFunc)(void);
@@ -3704,19 +3710,22 @@ static void sub_81B33B4(struct Pokemon *mons, u8 slotId, u8 b)
 static void CreateActionList(struct Pokemon *mons, u8 slotId)
 {
     u8 i, j;
-
     gUnknown_0203CEC4->listSize = 0;
     AppendToList(gUnknown_0203CEC4->actions, &gUnknown_0203CEC4->listSize, MENU_SUMMARY);
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    for (j = 0; sFieldMoves[j] != FIELD_MOVE_TERMINATOR; j++)
     {
-        for (j = 0; sFieldMoves[j] != FIELD_MOVE_TERMINATOR; j++)
+        for (i = 0; i < MAX_MON_MOVES; i++)
         {
-            if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
+            if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j] )
             {
                 AppendToList(gUnknown_0203CEC4->actions, &gUnknown_0203CEC4->listSize, j + MENU_FIELD_MOVES);
                 break;
             }
         }
+		if(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM) == sFieldItems[j])
+		{
+			AppendToList(gUnknown_0203CEC4->actions, &gUnknown_0203CEC4->listSize, j + MENU_FIELD_MOVES);
+		}
     }
 
     if (!InBattlePike())
@@ -4889,7 +4898,7 @@ static void hm_surf_run_dp02scr(void)
 
 static bool8 SetUpFieldMove_Surf(void)
 {
-    if (PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    if (PartyHasMonWithWaterEvent(MOVE_SURF) == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
         gPostMenuFieldCallback = hm_surf_run_dp02scr;

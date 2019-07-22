@@ -4884,4 +4884,174 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
+	
+//Field Move Items
+
+	[ITEM_CUT] =
+    {
+        .name = _("CUT"),
+        .itemId = ITEM_CUT,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_ROCK_SMASH] =
+    {
+        .name = _("ROCK SMASH"),
+        .itemId = ITEM_ROCK_SMASH,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_STRENGTH] =
+    {
+        .name = _("STRENGTH"),
+        .itemId = ITEM_STRENGTH,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_SURF] =
+    {
+        .name = _("SURF"),
+        .itemId = ITEM_SURF,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_FLASH] =
+    {
+        .name = _("FLASH"),
+        .itemId = ITEM_FLASH,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_FLY] =
+    {
+        .name = _("FLY"),
+        .itemId = ITEM_FLY,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_DIVE] =
+    {
+        .name = _("DIVE"),
+        .itemId = ITEM_DIVE,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_WATERFALL] =
+    {
+        .name = _("WATERFALL"),
+        .itemId = ITEM_WATERFALL,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_TELEPORT] =
+    {
+        .name = _("TELEPORT"),
+        .itemId = ITEM_TELEPORT,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_DIG] =
+    {
+        .name = _("DIG"),
+        .itemId = ITEM_DIG,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_SECRET_POWER] =
+    {
+        .name = _("SECRET POWER"),
+        .itemId = ITEM_SECRET_POWER,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_MILK_DRINK] =
+    {
+        .name = _("MILK DRINK"),
+        .itemId = ITEM_MILK_DRINK,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_SOFT_BOILED] =
+    {
+        .name = _("SOFT BOILED"),
+        .itemId = ITEM_SOFT_BOILED,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_SWEET_SCENT] =
+    {
+        .name = _("SWEET SCENT"),
+        .itemId = ITEM_SWEET_SCENT,
+        .price = 0,
+        .description = sFItemDesc,
+        .pocket = POCKET_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    }
 };

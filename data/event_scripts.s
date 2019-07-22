@@ -1717,7 +1717,8 @@ Route109_EventScript_271E95:: @ 8271E95
 	return
 
 EventScript_UseSurf:: @ 8271EA0
-	checkpartymove MOVE_SURF
+	setvar VAR_ITEMMOVECACHE, MOVE_SURF
+	special Special_CheckPartyFieldEvent
 	compare VAR_RESULT, 6
 	goto_if_eq EventScript_CantSurf
 	bufferpartymonnick 0, VAR_RESULT
@@ -1731,10 +1732,10 @@ EventScript_UseSurf:: @ 8271EA0
 
 EventScript_CancelSurf:: @ 8271ED5
 	releaseall
-
+	
 EventScript_CantSurf:: @ 8271ED6
 	end
-
+	
 Common_EventScript_SetupRivalGender:: @ 8271ED7
 	checkplayergender
 	compare VAR_RESULT, MALE
